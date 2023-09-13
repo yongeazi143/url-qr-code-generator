@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script src="https://cdn.tailwindcss.com" defer></script>
+    <!-- displays site properly based on user's device -->
+
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="32x32"
+      href="./images/favicon-32x32.png"
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inconsolata:wght@300;400&family=Merriweather+Sans:ital@0;1&display=swap"
+      rel="stylesheet"
+    />
+    <title>Frontend Mentor | QR code component</title>
+
+    <!-- Feel free to remove these styles or customise in your own stylesheet 👍 -->
+    <style>
+      .attribution {
+        font-size: 11px;
+        text-align: center;
+      }
+      .attribution a {
+        color: hsl(228, 45%, 44%);
+      }
+      * {
+        font-family: ;
+      }
+      #loader {
+        display: none;
+      }
+
+      /* Style for the input element when it's empty */
+      .shake {
+        border: 2px solid red !important;
+        animation: shake 0.2s ease-in-out;
+      }
+
+      /* Keyframes for the animation */
+      @keyframes shake {
+        0%,
+        100% {
+          transform: translateX(0);
+        }
+        25%,
+        75% {
+          transform: translateX(-5px);
+        }
+        50% {
+          transform: translateX(5px);
+        }
+      }
+    </style>
+  </head>
+  <nav class="fixed w-full top-0 left-0 bg-[#3e52a3] p-4 mb-10 z-50">
+    <div class="mx-auto lg:max-w-7xl md:max-w-5xl m-auto">
+      <h1 class="font-bold text-xl text-white">QR Code Generator</h1>
+    </div>
+  </nav>
+  <body>
+    <main class="relative mt-60 w-[375px] md:w-[700px] lg:w-[1440px] m-auto">
+      <div
+        class="flex flex-col-reverse align-center justify-center p-10 md:flex-row"
+      >
+        <div class="w-full md:w-2/3 mr-24">
+          <h1
+            class="text-xl font-bold mb-5 uppercase md:text-4xl text-[#3e52a3]"
+          >
+            URL QR-Code Generator
+          </h1>
+          <p class="mb-5 text-slate-500">
+            QR Codes allow smartphone users to access your website simply and
+            quickly.
+          </p>
+          <p class="mb-5 text-[#d6e2f0]">
+            Enter your URL below to generate a QR Code and download the image.
+          </p>
+
+          <form id="generateQR">
+            <input
+              type="url"
+              id="url"
+              placeholder="Enter a URL"
+              class="w-full border-2 border-gray-200 rounded p-3 text-gray-dark mr-2 transition-transform transform duration-200 focus:outline-none mb-5"
+            />
+            <select
+              id="size"
+              class="w-full border-2 border-gray-200 rounded p-3 text-gray-dark mr-2 focus:outline-none"
+            >
+              <option value="100">100 x 100</option>
+              <option value="200">200 x 200</option>
+              <option value="300" selected>300 x 300</option>
+            </select>
+            <button
+              class="w-full text-slate-100 bg-[#3e52a3] rounded text-center hover:bg-blue-600 py-3 px-3 mt-5"
+              type="submit"
+            >
+              Generate QR
+            </button>
+          </form>
+        </div>
+        <div class="w-full md:w-1/3 self-center">
+          <img
+            src="images/image-qr-code.png"
+            alt="qrcode"
+            class="w-1/2 mb-10 m-auto md:w-full rounded-md"
+          />
+        </div>
+      </div>
+      <!--Generated QR Code-->
+      <div
+        id="qr-code-container"
+        class="max-w-5xl text-center flex flex-col justify-center p-10 align-center m-auto mt-8 mb-10"
+      >
+        <!--Loader-->
+        <div
+          class="animate-spin inline-block w-16 h-16 border-[3px] border-current border-t-transparent text-blue-600 rounded-full mx-auto"
+          role="status"
+          aria-label="loading"
+          id="loader"
+        >
+          <span class="sr-only">Loading...</span>
+        </div>
+        <!--QR Code-->
+        <div id="qrcode" class="m-auto"></div>
+      </div>
+    </main>
+    <div class="attribution">
+      Challenge by
+      <a href="https://www.frontendmentor.io?ref=challenge" target="_blank"
+        >Frontend Mentor</a
+      >. Coded by <a href="#">YongEazi Dev</a>.
+    </div>
+
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"
+      integrity="sha512-CNgIRecGo7nphbeZ04Sc13ka07paqdeTu0WR1IM4kNcpmBAUSHSQX0FslNhTDadL4O5SAGapGt4FodqL8My0mA=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    ></script>
+    <script src="app.js"></script>
+  </body>
+</html>
